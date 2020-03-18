@@ -50,13 +50,13 @@ parser.add_argument("--batch_size", type=int, default=32,
 # data file configuration
 parser.add_argument('--data_dir', type=str, default='./data/',
                     help="the data directory, default as './data/")
-parser.add_argument('--train_file', type=str, default='skill_id_train.csv',
+parser.add_argument('--train_file', type=str, default='train_data.csv',
                     help="train data file, default as 'skill_id_train.csv'.")
-parser.add_argument('--test_file', type=str, default='skill_id_test.csv',
+parser.add_argument('--test_file', type=str, default='test_data.csv',
                     help="train data file, default as 'skill_id_test.csv'.")
 parser.add_argument("-csd", "--ckpt_save_dir", type=str, default=None,
                     help="checkpoint save directory")
-parser.add_argument('--dataset', type=str, default='a2009')
+parser.add_argument('--dataset', type=str, default='test')
 args = parser.parse_args()
 
 rnn_cells = {
@@ -95,6 +95,10 @@ elif dataset == 'a2009':
     train_path = './data/skill_id_train.csv'
     test_path = './data/skill_id_test.csv'
     save_dir_prefix = './a2009/'
+elif dataset=='test':
+    train_path='./data/train_data.csv'
+    test_path='./data/test_data.csv'
+    save_dir_prefix = './test/'
 
 
 network_config = {}
